@@ -1,0 +1,13 @@
+//Add this file in the GOPATH/src/calc
+//run go install and check for a '.a' file in GOPATH/pkg folder
+
+package calc //package name and folder name must be the same
+
+func Add(x, y int) int { //capital char makes the function publicly available
+	return x+y
+}
+
+func Subtract(x, y int) int {
+	return x-y
+}
+
