@@ -13,3 +13,11 @@ func TestAdd(t *testing.T) {
 		t.Error("Expected 25", result)
 	}//end if
 }//end of function
+
+func TestSubtract(t *testing.T) {
+	var result int
+	result = calc.Subtract(15,10)
+	if result != 5 {
+		t.Error("Expected 5", result)
+	}
+}//end of function
