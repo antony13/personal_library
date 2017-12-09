@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type User interface {
+	getFirstName() //remove pointer receiver from the func
+	getDetails()   //remove pointer receiver from the func
+}
+
 type Person struct {
 	firstname, lastname, email, location string
 	dob                                  time.Time
@@ -20,21 +25,21 @@ type Member struct {
 	Skills []string
 }
 
-func (p *Person) getFirstName() {
+func (p Person) getFirstName() {
 	fmt.Printf("\n%s is the name\n", p.firstname)
 }
 
-func (p *Person) getDetails() {
-	fmt.Printf("This is the email: %s, this is the location: %s.\n",p.email, p.location)
+func (p Person) getDetails() {
+	fmt.Printf("This is the email: %s, this is the location: %s.\n", p.email, p.location)
 }
 
 //Override getDetails
-func (a *Admin) getDetails() {
+func (a Admin) getDetails() {
 	a.Person.getDetails() //use the above func
 	fmt.Println("The roles of the admin are:")
-	for _, v:= range a.Roles {
+	for _, v := range a.Roles {
 		fmt.Println(v)
-	}//end for
+	} //end for
 }
 
 func (p *Person) setFirstname(newName string) {
@@ -56,4 +61,11 @@ func main() {
 	p.getFirstName()
 	p.getDetails()
 	adminUser.getDetails()
+
+	//Use the interface
+	allUsers := []User{p, adminUser}
+	for _, v := range allUsers {
+		v.getDetails()
+	}
+
 }
