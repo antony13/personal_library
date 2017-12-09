@@ -24,6 +24,19 @@ func (p *Person) getFirstName() {
 	fmt.Printf("\n%s is the name\n", p.firstname)
 }
 
+func (p *Person) getDetails() {
+	fmt.Printf("This is the email: %s, this is the location: %s.\n",p.email, p.location)
+}
+
+//Override getDetails
+func (a *Admin) getDetails() {
+	a.Person.getDetails() //use the above func
+	fmt.Println("The roles of the admin are:")
+	for _, v:= range a.Roles {
+		fmt.Println(v)
+	}//end for
+}
+
 func (p *Person) setFirstname(newName string) {
 	p.firstname = newName
 }
@@ -41,4 +54,6 @@ func main() {
 	adminUser.Roles = []string{"role1,role2,role3"}
 	adminUser.getFirstName()
 	p.getFirstName()
+	p.getDetails()
+	adminUser.getDetails()
 }
