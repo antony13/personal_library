@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var wg sync.WaitGroup // wait for the program to finish goroutines
+var wg sync.WaitGroup // wait for the program to finish with goroutines before exit
 
 func main() {
 	wg.Add(2) // add a count of 2, one for each subroutine
