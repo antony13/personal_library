@@ -1,0 +1,3 @@
+Copy these files & folders in your GOPATH/src
+'go run' the main.go and then check on your browser:
+http://your_internal_ip:8080/about.html
